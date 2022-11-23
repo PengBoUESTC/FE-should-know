@@ -411,9 +411,11 @@ function toAlignment(value) {
 
 const NpmApi = require('npm-api');
 const fetch = require('node-fetch');
+const now = new Date();
+const time = `${now.getFullYear()}-${(now.getMonth() + '').padStart(2, '0')}-${(now.getDate() + '').padStart(2, '0')}`;
 const fileName = 'README.md';
 const info = `---
-id: ${new Date()}
+id: ${time}
 author: PengboUestc
 ---
 
@@ -427,21 +429,26 @@ function getRepo(repository) {
     const { url } = repository;
     return url.split('github.com')[1].split('.')[0];
 }
-const header = ['package', 'stars', 'forks', 'issues', 'repository'];
 function getData(pkgList) {
     return pkgList.map((element) => __awaiter(this, void 0, void 0, function* () {
         const { name } = element;
         const repo = npm.repo(name);
+        const downloads = yield repo.downloads(time);
+        const totalDownload = downloads.reduce((pre, post) => {
+            return pre + post.downloads;
+        }, 0);
+        const averageDownload = Math.round(totalDownload / downloads.length);
         const repository = yield repo.prop('repository');
         const gitMsg = yield fetch(`https://api.github.com/repos${getRepo(repository)}`);
         if (!gitMsg.ok)
-            return [name, '', '', '', ''];
+            return [name, '', '', '', '', `${averageDownload}`];
         const { stargazers_count, forks, open_issues, html_url } = yield gitMsg.json();
-        return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`];
+        return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`, `${averageDownload}`];
     }));
 }
 function run(pkgConfig) {
     return __awaiter(this, void 0, void 0, function* () {
+        const header = ['package', 'stars', 'forks', 'issues', 'repository', 'download(avg of 1 month)'];
         Object.entries(pkgConfig).forEach(([key, pkgList]) => __awaiter(this, void 0, void 0, function* () {
             const dataList = (yield Promise.all(getData(pkgList))).sort((pre, post) => {
                 return +post[1] - (+pre[1]);

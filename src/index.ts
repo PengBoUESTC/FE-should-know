@@ -13,9 +13,11 @@ interface ModuleConfig {
   [key: string]: Array<PkgConfig>
 }
 
+const now = new Date()
+const time = `${now.getFullYear()}-${(now.getMonth() + '').padStart(2, '0')}-${(now.getDate() + '').padStart(2, '0')}`
 const fileName = 'README.md'
 const info = `---
-id: ${new Date()}
+id: ${time}
 author: PengboUestc
 ---
 
@@ -37,27 +39,31 @@ function getRepo(repository: Record<string, string>) {
 }
 
 // write header
-const header = ['package', 'stars', 'forks', 'issues', 'repository']
 
 function getData(pkgList: Array<PkgConfig>): Array<Promise<string[]>> {
   return pkgList.map(async (element): Promise<string[]> => {
     const { name } = element
     const repo = npm.repo(name);
     // get downloads 
-    // const pkg = await repo.package()
+    const downloads: Array<{ day: string, downloads: number }> = await repo.downloads(time)
+    const totalDownload = downloads.reduce((pre: number, post: { downloads: number }) => { 
+        return pre + post.downloads
+    }, 0)
+    const averageDownload = Math.round(totalDownload / downloads.length)
     const repository = await repo.prop('repository')
     
     const gitMsg = await fetch(`https://api.github.com/repos${getRepo(repository)}`)
 
-    if(!gitMsg.ok) return [name, '', '', '', '']
+    if(!gitMsg.ok) return [name, '', '', '', '', `${averageDownload}`]
     // stars forks, issues, url
     const { stargazers_count, forks, open_issues, html_url } = await gitMsg.json()
-    return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`]
-    
+    return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`, `${averageDownload}`]
   });
 }
 
 async function run(pkgConfig: ModuleConfig) {
+  const header = ['package', 'stars', 'forks', 'issues', 'repository', 'download(avg of 1 month)']
+
   Object.entries(pkgConfig).forEach(async ([key, pkgList]) => {
     const dataList = (await Promise.all(getData(pkgList))).sort((pre, post) => {
       return  +post[1] - (+pre[1])
