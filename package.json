@@ -1,0 +1,36 @@
+{
+  "name": "FE-should-know",
+  "version": "1.0.0",
+  "description": "FE-should-know",
+  "main": "dist/index.js",
+  "dependencies": {
+    "markdown-table": "^3.0.2",
+    "node-fetch": "^2.6.0",
+    "npm-api": "^1.0.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-json": "^5.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/node": "^18.11.9",
+    "rollup": "^2.79.1",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-typescript2": "^0.34.1",
+    "typescript": "^4.9.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup --config rollup.config.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PengBoUESTC/FE-should-know.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PengBoUESTC/FE-should-know/issues"
+  },
+  "homepage": "https://github.com/PengBoUESTC/FE-should-know#readme"
+}
