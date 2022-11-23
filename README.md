@@ -1,6 +1,6 @@
 # FE-should-know
 
-## framework
+## Framework
 
   ### react
 
@@ -22,7 +22,7 @@
 
   ### vanilla
 
-## javascript
+## Javascript
 
   ### babel
 
@@ -30,7 +30,7 @@
 
   ### esbuild
 
-## cli tools
+## Cli tools
 
   ### minimist
 
@@ -48,7 +48,7 @@
 
   ### enquirer
 
-## css
+## Css
 
   ### sass
 
@@ -64,7 +64,7 @@
 
   ### tailwindcss
 
-## build
+## Build
 
   ### webpack
 
@@ -78,7 +78,7 @@
 
   ### turbo
 
-## utils
+## Utils
 
   ### lodash
 
@@ -88,7 +88,9 @@
 
   ### ramda
 
-## components
+  ### rxjs
+
+## Components
 
   ### stencli
 
@@ -96,7 +98,7 @@
 
   ### ant-design
 
-## node
+## Node
 
   ### express
 
@@ -108,7 +110,7 @@
 
   ### nestjs
 
-## weapp
+## Weapp
 
   ### taro
 
@@ -138,7 +140,7 @@
 
   ### semver
 
-## test
+## Test
 
   ### jest
 
