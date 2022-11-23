@@ -1,29 +1,31 @@
-[
-  {
-    "name": "react"
-  },
-  {
-    "name": "vue"
-  },
-  {
-    "name": "@angular/core"
-  },
-  {
-    "name": "solid-js"
-  },
-  {
-    "name": "svelte"
-  },
-  {
-    "name": "preact"
-  },
-  {
-    "name": "lit"
-  },
-  {
-    "name": "astro"
-  },
-  {
-    "name": "vitepress"
-  }
-]
+{
+  "Framework": [
+    {
+      "name": "react"
+    },
+    {
+      "name": "vue"
+    },
+    {
+      "name": "@angular/core"
+    },
+    {
+      "name": "solid-js"
+    },
+    {
+      "name": "svelte"
+    },
+    {
+      "name": "preact"
+    },
+    {
+      "name": "lit"
+    },
+    {
+      "name": "astro"
+    },
+    {
+      "name": "vitepress"
+    }
+  ]
+}

@@ -5,31 +5,42 @@ import { markdownTable } from 'markdown-table'
 const NpmApi = require('npm-api')
 const fetch = require('node-fetch')
 
+interface PkgConfig {
+  name: string
+}
+
+interface ModuleConfig {
+  [key: string]: Array<PkgConfig>
+}
+
 const fileName = 'README.md'
+const info = `---
+id: ${new Date()}
+author: PengboUestc
+---
+
+`
 
 const filePath = resolve(__dirname, '..', fileName)
+writeFileSync(filePath, info)
 
 const pkgCfg = readFileSync(resolve(__dirname, '..', 'pkg.json')).toString()
 
-const pkgConfig: Array<{ name: string }> = JSON.parse(pkgCfg)
-
+const pkgConfig: ModuleConfig = JSON.parse(pkgCfg)
 
 const npm = new NpmApi();
+
 
 function getRepo(repository: Record<string, string>) {
   const { url } = repository
   return url.split('github.com')[1].split('.')[0]
 }
 
-
 // write header
-const header = markdownTable([
-  ['package', 'stars', 'forks', 'issues', 'repository'],
-])
-writeFileSync(filePath, `${header}\n`)
+const header = ['package', 'stars', 'forks', 'issues', 'repository']
 
-async function run() {
-  pkgConfig.map(async element => {
+function getData(pkgList: Array<PkgConfig>): Array<Promise<string[]>> {
+  return pkgList.map(async (element): Promise<string[]> => {
     const { name } = element
     const repo = npm.repo(name);
     // get downloads 
@@ -37,15 +48,25 @@ async function run() {
     const repository = await repo.prop('repository')
     
     const gitMsg = await fetch(`https://api.github.com/repos${getRepo(repository)}`)
-    let result = markdownTable([[name, '', '', '', '']])
 
-    if(gitMsg.ok) {
-      // stars forks, issues, url
-      const { stargazers_count, forks, open_issues, html_url } = await gitMsg.json()
-      result = markdownTable([[name, stargazers_count, forks, open_issues, `(repository)[${html_url}]`]])
-    }
-    writeFileSync(filePath, `${result}\n`, { flag: 'a' })
+    if(!gitMsg.ok) return [name, '', '', '', '']
+    // stars forks, issues, url
+    const { stargazers_count, forks, open_issues, html_url } = await gitMsg.json()
+    return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`]
+    
   });
 }
 
-run()
+async function run(pkgConfig: ModuleConfig) {
+  Object.entries(pkgConfig).forEach(async ([key, pkgList]) => {
+    writeFileSync(filePath, `## ${key}\n`, { flag: 'a' })
+    const dataList = (await Promise.all(getData(pkgList))).sort((pre, post) => {
+      return  +post[1] - (+pre[1])
+    })
+
+    dataList.unshift(header)
+    writeFileSync(filePath, markdownTable(dataList), { flag: 'a' })
+  })
+
+}
+run(pkgConfig)

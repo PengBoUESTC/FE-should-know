@@ -412,7 +412,14 @@ function toAlignment(value) {
 const NpmApi = require('npm-api');
 const fetch = require('node-fetch');
 const fileName = 'README.md';
+const info = `---
+id: ${new Date()}
+author: PengboUestc
+---
+
+`;
 const filePath = path.resolve(__dirname, '..', fileName);
+fs.writeFileSync(filePath, info);
 const pkgCfg = fs.readFileSync(path.resolve(__dirname, '..', 'pkg.json')).toString();
 const pkgConfig = JSON.parse(pkgCfg);
 const npm = new NpmApi();
@@ -420,24 +427,29 @@ function getRepo(repository) {
     const { url } = repository;
     return url.split('github.com')[1].split('.')[0];
 }
-const header = markdownTable([
-    ['package', 'stars', 'forks', 'issues', 'repository'],
-]);
-fs.writeFileSync(filePath, `${header}\n`);
-function run() {
+const header = ['package', 'stars', 'forks', 'issues', 'repository'];
+function getData(pkgList) {
+    return pkgList.map((element) => __awaiter(this, void 0, void 0, function* () {
+        const { name } = element;
+        const repo = npm.repo(name);
+        const repository = yield repo.prop('repository');
+        const gitMsg = yield fetch(`https://api.github.com/repos${getRepo(repository)}`);
+        if (!gitMsg.ok)
+            return [name, '', '', '', ''];
+        const { stargazers_count, forks, open_issues, html_url } = yield gitMsg.json();
+        return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`];
+    }));
+}
+function run(pkgConfig) {
     return __awaiter(this, void 0, void 0, function* () {
-        pkgConfig.map((element) => __awaiter(this, void 0, void 0, function* () {
-            const { name } = element;
-            const repo = npm.repo(name);
-            const repository = yield repo.prop('repository');
-            const gitMsg = yield fetch(`https://api.github.com/repos${getRepo(repository)}`);
-            let result = markdownTable([[name, '', '', '', '']]);
-            if (gitMsg.ok) {
-                const { stargazers_count, forks, open_issues, html_url } = yield gitMsg.json();
-                result = markdownTable([[name, stargazers_count, forks, open_issues, `(repository)[${html_url}]`]]);
-            }
-            fs.writeFileSync(filePath, `${result}\n`, { flag: 'a' });
+        Object.entries(pkgConfig).forEach(([key, pkgList]) => __awaiter(this, void 0, void 0, function* () {
+            fs.writeFileSync(filePath, `## ${key}\n`, { flag: 'a' });
+            const dataList = (yield Promise.all(getData(pkgList))).sort((pre, post) => {
+                return +post[1] - (+pre[1]);
+            });
+            dataList.unshift(header);
+            fs.writeFileSync(filePath, markdownTable(dataList), { flag: 'a' });
         }));
     });
 }
-run();
+run(pkgConfig);

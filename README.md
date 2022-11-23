@@ -1,20 +1,17 @@
-| package | stars | forks | issues | repository |
-| ------- | ----- | ----- | ------ | ---------- |
-| vue | 33843 | 6107 | 727 | (repository)[https://github.com/vuejs/core] |
-| --- | ----- | ---- | --- | ------------------------------------------- |
-| preact | 33347 | 1834 | 227 | (repository)[https://github.com/preactjs/preact] |
-| ------ | ----- | ---- | --- | ------------------------------------------------ |
-| react | 198089 | 41122 | 1099 | (repository)[https://github.com/facebook/react] |
-| ----- | ------ | ----- | ---- | ----------------------------------------------- |
-| svelte | 63351 | 3096 | 827 | (repository)[https://github.com/sveltejs/svelte] |
-| ------ | ----- | ---- | --- | ------------------------------------------------ |
-| @angular/core | 85114 | 22578 | 1286 | (repository)[https://github.com/angular/angular] |
-| ------------- | ----- | ----- | ---- | ------------------------------------------------ |
-| lit | 13160 | 675 | 368 | (repository)[https://github.com/lit/lit] |
-| --- | ----- | --- | --- | ---------------------------------------- |
-| vitepress | 6203 | 1030 | 164 | (repository)[https://github.com/vuejs/vitepress] |
-| --------- | ---- | ---- | --- | ------------------------------------------------ |
-| solid-js | 23648 | 622 | 27 | (repository)[https://github.com/solidjs/solid] |
-| -------- | ----- | --- | -- | ---------------------------------------------- |
-| astro | 22759 | 1073 | 61 | (repository)[https://github.com/withastro/astro] |
-| ----- | ----- | ---- | -- | ------------------------------------------------ |
+---
+id: Wed Nov 23 2022 19:54:52 GMT+0800 (中国标准时间)
+author: PengboUestc
+---
+
+## Framework
+| package       | stars  | forks | issues | repository                                       |
+| ------------- | ------ | ----- | ------ | ------------------------------------------------ |
+| react         | 198091 | 41121 | 1099   | [repository](https://github.com/facebook/react)  |
+| @angular/core | 85114  | 22579 | 1286   | [repository](https://github.com/angular/angular) |
+| svelte        | 63353  | 3096  | 827    | [repository](https://github.com/sveltejs/svelte) |
+| vue           | 33843  | 6107  | 727    | [repository](https://github.com/vuejs/core)      |
+| preact        | 33347  | 1834  | 227    | [repository](https://github.com/preactjs/preact) |
+| solid-js      | 23650  | 622   | 27     | [repository](https://github.com/solidjs/solid)   |
+| astro         | 22760  | 1073  | 61     | [repository](https://github.com/withastro/astro) |
+| lit           | 13160  | 675   | 368    | [repository](https://github.com/lit/lit)         |
+| vitepress     | 6203   | 1030  | 164    | [repository](https://github.com/vuejs/vitepress) |
