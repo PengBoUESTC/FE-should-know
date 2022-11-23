@@ -22,7 +22,7 @@
 
   ### vanilla
 
-## Javascript
+## Javascript/Typescript
 
   ### babel
 
