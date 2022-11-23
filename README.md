@@ -92,7 +92,7 @@
 
 ## Components
 
-  ### stencli
+  ### stencil
 
   ### element
 
