@@ -59,13 +59,12 @@ function getData(pkgList: Array<PkgConfig>): Array<Promise<string[]>> {
 
 async function run(pkgConfig: ModuleConfig) {
   Object.entries(pkgConfig).forEach(async ([key, pkgList]) => {
-    writeFileSync(filePath, `## ${key}\n`, { flag: 'a' })
     const dataList = (await Promise.all(getData(pkgList))).sort((pre, post) => {
       return  +post[1] - (+pre[1])
     })
 
     dataList.unshift(header)
-    writeFileSync(filePath, markdownTable(dataList), { flag: 'a' })
+    writeFileSync(filePath, `## ${key}\n${markdownTable(dataList)}\n`, { flag: 'a' })
   })
 
 }

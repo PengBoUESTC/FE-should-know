@@ -443,12 +443,11 @@ function getData(pkgList) {
 function run(pkgConfig) {
     return __awaiter(this, void 0, void 0, function* () {
         Object.entries(pkgConfig).forEach(([key, pkgList]) => __awaiter(this, void 0, void 0, function* () {
-            fs.writeFileSync(filePath, `## ${key}\n`, { flag: 'a' });
             const dataList = (yield Promise.all(getData(pkgList))).sort((pre, post) => {
                 return +post[1] - (+pre[1]);
             });
             dataList.unshift(header);
-            fs.writeFileSync(filePath, markdownTable(dataList), { flag: 'a' });
+            fs.writeFileSync(filePath, `## ${key}\n${markdownTable(dataList)}\n`, { flag: 'a' });
         }));
     });
 }

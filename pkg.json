@@ -27,5 +27,65 @@
     {
       "name": "vitepress"
     }
+  ],
+  "Javascript/Typescript": [
+    {
+      "name": "@babel/core"
+    },
+    {
+      "name": "@swc/core"
+    },
+    {
+      "name": "esbuild"
+    }
+  ],
+  "Cli tools": [
+    {
+      "name": "minimist"
+    },
+    {
+      "name": "cac"
+    },
+    {
+      "name": "commander"
+    },
+    {
+      "name": "execa"
+    },
+    {
+      "name": "exec-sh"
+    },
+    {
+      "name": "shelljs"
+    },
+    {
+      "name": "chalk"
+    },
+    {
+      "name": "picocolors"
+    },
+    {
+      "name": "enquirer"
+    }
+  ],
+  " Node": [
+    {
+      "name": "express"
+    },
+    {
+      "name": "connect"
+    },
+    {
+      "name": "koa"
+    },
+    {
+      "name": "vite"
+    },
+    {
+      "name": "@nestjs/core"
+    },
+    {
+      "name": "nodemon"
+    }
   ]
 }
