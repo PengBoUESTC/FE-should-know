@@ -110,6 +110,8 @@
 
   ### nestjs
 
+  ### nodemon
+
 ## Weapp
 
   ### taro
