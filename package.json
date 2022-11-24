@@ -1,6 +1,6 @@
 {
   "name": "FE-should-know",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "FE-should-know",
   "main": "dist/index.js",
   "bin": {
