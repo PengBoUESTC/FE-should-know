@@ -1,10 +1,10 @@
 {
-  "name": "FE-should-know",
+  "name": "fe-should-know",
   "version": "0.0.2",
   "description": "FE-should-know",
   "main": "dist/index.js",
   "bin": {
-    "FE-should-know": "bin/cli.js"
+    "fe-should-know": "bin/cli.js"
   },
   "dependencies": {
     "markdown-table": "^3.0.2",
