@@ -26,6 +26,12 @@
     },
     {
       "name": "vitepress"
+    },
+    {
+      "name": "@stencil/core"
+    },
+    {
+      "name": "omi"
     }
   ],
   "Javascript/Typescript": [
@@ -86,6 +92,104 @@
     },
     {
       "name": "nodemon"
+    }
+  ],
+  "Css": [
+    {
+      "name": "sass"
+    },
+    {
+      "name": "less"
+    },
+    {
+      "name": "postcss"
+    },
+    {
+      "name": "lightningcss"
+    },
+    {
+      "name": "styled-components"
+    },
+    {
+      "name": "cssnano"
+    },
+    {
+      "name": "@emotion/styled"
+    },
+    {
+      "name": "tailwindcss"
+    }
+  ],
+  "Build": [
+    {
+      "name": "webpack"
+    },
+    {
+      "name": "vite"
+    },
+    {
+      "name": "rollup"
+    },
+    {
+      "name": "gulp"
+    },
+    {
+      "name": "esbuild"
+    },
+    {
+      "name": "turbo"
+    }
+  ],
+  "Project": [
+    {
+      "name": "eslint"
+    },
+    {
+      "name": "prettier"
+    },
+    {
+      "name": "cross-env"
+    },
+    {
+      "name": "simple-git-hooks"
+    },
+    {
+      "name": "husky"
+    },
+    {
+      "name": "lint-staged"
+    },
+    {
+      "name": "pre-commit"
+    },
+    {
+      "name": "dotenv"
+    },
+    {
+      "name": "dotenv-expand"
+    },
+    {
+      "name": "envinfo"
+    },
+    {
+      "name": "conventional-changelog"
+    },
+    {
+      "name": "semver"
+    }
+  ],
+  "Utils": [
+    {
+      "name": "lodash"
+    },
+    {
+      "name": "axios"
+    },
+    {
+      "name": "rxjs"
+    },
+    {
+      "name": "ramda"
     }
   ]
 }
