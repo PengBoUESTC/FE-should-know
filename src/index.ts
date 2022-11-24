@@ -18,7 +18,7 @@ const time = `${now.getFullYear()}-${(now.getMonth() + '').padStart(2, '0')}-${(
 const fileName = 'README.md'
 const info = `---
 id: ${time}
-author: PengboUestc
+author: [PengboUestc](https://github.com/PengBoUESTC)
 ---
 
 `
