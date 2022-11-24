@@ -25,6 +25,10 @@ author: [PengboUestc](https://github.com/PengBoUESTC)
 
 const filePath = resolve(process.cwd(), fileName)
 writeFileSync(filePath, info)
+writeFileSync(filePath, `
+  #### to get the pkg info: 
+  > npx fs-should-know
+`, { flag: 'a' })
 
 const pkgCfg = readFileSync(resolve(__dirname, '..', 'pkg.json')).toString()
 

@@ -416,12 +416,16 @@ const time = `${now.getFullYear()}-${(now.getMonth() + '').padStart(2, '0')}-${(
 const fileName = 'README.md';
 const info = `---
 id: ${time}
-author: PengboUestc
+author: [PengboUestc](https://github.com/PengBoUESTC)
 ---
 
 `;
 const filePath = path.resolve(process.cwd(), fileName);
 fs.writeFileSync(filePath, info);
+fs.writeFileSync(filePath, `
+  #### to get the pkg info: 
+  > npx fs-should-know
+`, { flag: 'a' });
 const pkgCfg = fs.readFileSync(path.resolve(__dirname, '..', 'pkg.json')).toString();
 const pkgConfig = JSON.parse(pkgCfg);
 const npm = new NpmApi();
