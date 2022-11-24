@@ -420,7 +420,7 @@ author: PengboUestc
 ---
 
 `;
-const filePath = path.resolve(__dirname, '..', fileName);
+const filePath = path.resolve(process.cwd(), fileName);
 fs.writeFileSync(filePath, info);
 const pkgCfg = fs.readFileSync(path.resolve(__dirname, '..', 'pkg.json')).toString();
 const pkgConfig = JSON.parse(pkgCfg);

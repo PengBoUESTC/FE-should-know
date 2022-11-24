@@ -23,7 +23,7 @@ author: PengboUestc
 
 `
 
-const filePath = resolve(__dirname, '..', fileName)
+const filePath = resolve(process.cwd(), fileName)
 writeFileSync(filePath, info)
 
 const pkgCfg = readFileSync(resolve(__dirname, '..', 'pkg.json')).toString()
