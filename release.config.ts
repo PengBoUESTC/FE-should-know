@@ -7,4 +7,5 @@ export default {
     changelog: 'changelog', //if exist, run changelog command
   },
   // tag: true // need git tag?
+  release: true
 };
