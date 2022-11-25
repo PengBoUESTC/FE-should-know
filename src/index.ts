@@ -55,18 +55,20 @@ function getData(pkgList: Array<PkgConfig>): Array<Promise<string[]>> {
     }, 0)
     const averageDownload = Math.round(totalDownload / downloads.length)
     const repository = await repo.prop('repository')
-    
+    const description = await repo.prop('description')
+    const keywords = ((await repo.prop('keywords')) || []).join(' ')
+
     const gitMsg = await fetch(`https://api.github.com/repos${getRepo(repository)}`)
 
-    if(!gitMsg.ok) return [name, '', '', '', '', `${averageDownload}`]
+    if(!gitMsg.ok) return [name, '', '', '', '', description, keywords, `${averageDownload}`]
     // stars forks, issues, url
     const { stargazers_count, forks, open_issues, html_url } = await gitMsg.json()
-    return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`, `${averageDownload}`]
+    return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`, description, keywords, `${averageDownload}`]
   });
 }
 
 async function run(pkgConfig: ModuleConfig) {
-  const header = ['package', 'stars', 'forks', 'issues', 'repository', 'download(avg of 1 month)']
+  const header = ['package', 'stars', 'forks', 'issues', 'repository', 'description', 'keywords', 'download(avg of 1 month)']
 
   Object.entries(pkgConfig).forEach(async ([key, pkgList]) => {
     const dataList = (await Promise.all(getData(pkgList))).sort((pre, post) => {

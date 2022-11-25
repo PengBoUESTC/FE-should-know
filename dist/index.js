@@ -443,16 +443,18 @@ function getData(pkgList) {
         }, 0);
         const averageDownload = Math.round(totalDownload / downloads.length);
         const repository = yield repo.prop('repository');
+        const description = yield repo.prop('description');
+        const keywords = ((yield repo.prop('keywords')) || []).join(' ');
         const gitMsg = yield fetch(`https://api.github.com/repos${getRepo(repository)}`);
         if (!gitMsg.ok)
-            return [name, '', '', '', '', `${averageDownload}`];
+            return [name, '', '', '', '', description, keywords, `${averageDownload}`];
         const { stargazers_count, forks, open_issues, html_url } = yield gitMsg.json();
-        return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`, `${averageDownload}`];
+        return [name, stargazers_count, forks, open_issues, `[repository](${html_url})`, description, keywords, `${averageDownload}`];
     }));
 }
 function run(pkgConfig) {
     return __awaiter(this, void 0, void 0, function* () {
-        const header = ['package', 'stars', 'forks', 'issues', 'repository', 'download(avg of 1 month)'];
+        const header = ['package', 'stars', 'forks', 'issues', 'repository', 'description', 'keywords', 'download(avg of 1 month)'];
         Object.entries(pkgConfig).forEach(([key, pkgList]) => __awaiter(this, void 0, void 0, function* () {
             const dataList = (yield Promise.all(getData(pkgList))).sort((pre, post) => {
                 return +post[1] - (+pre[1]);

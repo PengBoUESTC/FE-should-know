@@ -22,16 +22,48 @@
       "name": "lit"
     },
     {
-      "name": "astro"
-    },
-    {
-      "name": "vitepress"
-    },
-    {
       "name": "@stencil/core"
     },
     {
       "name": "omi"
+    },
+    {
+      "name": "ember-source"
+    },
+    {
+      "name": "alpine"
+    }
+  ],
+  "SSR": [
+    {
+      "name": "@builder.io/qwik"
+    },
+    {
+      "name": "next"
+    },
+    {
+      "name": "nuxt"
+    },
+    {
+      "name": "nuxt"
+    },
+    {
+      "name": "remix"
+    },
+    {
+      "name": "gatsby"
+    },
+    {
+      "name": "@11ty/eleventy"
+    },
+    {
+      "name": "@docusaurus/core"
+    },
+    {
+      "name": "astro"
+    },
+    {
+      "name": "vitepress"
     }
   ],
   "Javascript/Typescript": [
@@ -190,6 +222,26 @@
     },
     {
       "name": "ramda"
+    }
+  ],
+  "Test": [
+    {
+      "name": "jest"
+    },
+    {
+      "name": "mocha"
+    },
+    {
+      "name": "cypress"
+    },
+    {
+      "name": "puppeteer"
+    },
+    {
+      "name": "vitest"
+    },
+    {
+      "name": "chai"
     }
   ]
 }
