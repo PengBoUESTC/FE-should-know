@@ -1,3 +1,7 @@
+**访问微信小程序快速搜索npm包信息**
+
+![image](https://user-images.githubusercontent.com/57180744/204519329-fbe297c9-69c8-4fde-905b-4d2a8ea588d5.png)
+
 ---
 id: 2022-10-25
 author: [PengboUestc](https://github.com/PengBoUESTC)
@@ -111,3 +115,4 @@ author: [PengboUestc](https://github.com/PengBoUESTC)
 | next             |       |       |        |                                                  | The React Framework                                                                                               |                                                                                                                                                                                    | 556721                   |
 | gatsby           |       |       |        |                                                  | Blazing fast modern site generator for React                                                                      | blog generator jekyll markdown react ssg website                                                                                                                                   | 127848                   |
 | @docusaurus/core |       |       |        |                                                  | Easy to Maintain Open Source Documentation Websites                                                               | react static site generator webpack documentation websites open source docusaurus                                                                                                  | 31285                    |
+
